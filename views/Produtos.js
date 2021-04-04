@@ -2,26 +2,27 @@ import { StatusBar } from "expo-status-bar";
 import React, {useState, useEffect} from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 
-
 import Card from "../components/Card";
 
-import { getProdutos } from "../services/ProdutoService"
+import { getProdutos } from '../services/ProdutoService';
 
 export default function Produtos(props) {
 
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
-   async function loadContent() {
-     const produtos = await getProdutos();
-     setProdutos(produtos);
-   }
-   loadContent();
+    async function loadContent() {
+      const produtos = await getProdutos();
+      setProdutos(produtos);
+    }
+    loadContent();
   });
 
   var renderItem = ({ item }) => {
     return <Card
       {...props}
+      navigation={props.navigation}
+      id={item.id} 
       produto={item.produto}
       descricao={item.descricao}
       img={item.img}
@@ -43,7 +44,7 @@ export default function Produtos(props) {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#888888',
+    backgroundColor: '#000000',
     paddingTop: 25,
     padding: 10,
   }, 
