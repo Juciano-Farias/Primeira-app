@@ -8,9 +8,9 @@ export default function Card(props) {
       <Image style={styles.foto} source={{ uri: props.img }} />
       <View style={styles.card_description}>
         <Text>{props.produto}</Text>
-        <Text>{props.descricao}</Text>
+        <Text>R$: {props.preco}</Text>
         <Button title={props.botao} onPress={() => props.navigation.navigate('Produto', 
-        {idProduto: props.id},
+        {id: props.id},
         )} />
       </View>
     </View>

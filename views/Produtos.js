@@ -20,11 +20,10 @@ export default function Produtos(props) {
 
   var renderItem = ({ item }) => {
     return <Card
-      {...props}
       navigation={props.navigation}
       id={item.id} 
       produto={item.produto}
-      descricao={item.descricao}
+      preco={item.preco}
       img={item.img}
       botao={item.botao}
     />;

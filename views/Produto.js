@@ -1,25 +1,50 @@
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
-
-import Card from "../components/Card";
+import { StyleSheet, Text, View, Image } from "react-native";
 
 import { getProduto } from '../services/ProdutoService';
-import { getProdutos } from '../services/ProdutoService';
+
 
 export default function Produto(props) {
   const [produto, setProduto] = useState({});
 
   useEffect(() => {
     async function loadContent() {
-      const produto = await getProduto(props.route.params.idProduto);
+      const produto = await getProduto(props.route.params.id);
       setProduto(produto);
     }
     loadContent();
   });
 
-    return( <View>
-        <Text>{produto.id}</Text>
-        <Text>Olá</Text>
+    return ( <>
+      <View style={styles.container}>
+        <Image style={styles.foto} source={{ uri: produto.img }} />
+        <View style={styles.container2}>
+          <Text>{produto.produto}</Text>
+          <Text styles={styles.preco}>R$:{produto.preco}</Text>
+        </View>
+        <Text>{produto.descricao}</Text>
     </View>
+    </>
+    
     );
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: 'center',
+  },
+  foto:{
+    height: 200,
+    width: 200,
+    marginTop: 70,
+    marginBottom: 70,
+  },
+  preco:{
+    padding: 50,
+  },
+  container2:{
+    paddingBottom: 50,
+  },
+
+});
