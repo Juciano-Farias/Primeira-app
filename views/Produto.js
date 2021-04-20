@@ -8,12 +8,12 @@ export default function Produto(props) {
   const [produto, setProduto] = useState({});
 
   useEffect(() => {
-    async function loadContent() {
-      const produto = await getProduto(props.route.params.id);
+    async function loadContent() {     
+      const produto = await getProduto(props.idProduto);
       setProduto(produto);
     }
     loadContent();
-  });
+  })
 
     return ( <>
       <View style={styles.container}>
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     alignItems: 'center',
+    backgroundColor: '#FFFFFF',
   },
   foto:{
     height: 200,

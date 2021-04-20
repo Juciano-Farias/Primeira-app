@@ -1,19 +1,24 @@
 
 import React from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native";
 
 export default function Card(props) {
   return (
+
+    <TouchableHighlight onPress = {() => props.navigation.navigate('Produto', {
+      screen: 'Tabs',
+      idProduto: props.id,         
+    }
+  )}>  
+
     <View style={styles.card}>
       <Image style={styles.foto} source={{ uri: props.img }} />
       <View style={styles.card_description}>
         <Text>{props.produto}</Text>
         <Text>R$: {props.preco}</Text>
-        <Button title={props.botao} onPress={() => props.navigation.navigate('Produto', 
-        {id: props.id},
-        )} />
       </View>
     </View>
+    </TouchableHighlight>
   );
 }
 

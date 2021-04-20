@@ -5,7 +5,7 @@ import {  NavigationContainer } from "@react-navigation/native";
 
 import Produtos from "./views/Produtos"
 import Produto from "./views/Produto"
-import Tab from "./views/Tab"
+import Tabs from "./views/Tab"
 import { StatusBar } from "expo-status-bar";
 
 const Stack = createStackNavigator();
@@ -16,13 +16,15 @@ export default function App() {
       <StatusBar style="light" />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerTitleAlign: "center" }}>
-          <Stack.Screen name="Produtos"
+          <Stack.Screen 
+          name="Produtos"
           component={Produtos}
           options={{title:'Produtos'}}
           />
-          <Stack.Screen name="Produto"
-          component={Tab}
-          options={{title:'Produto'}}
+          <Stack.Screen 
+          name="Produto"
+          component={Tabs}
+          options={({navigation}) => ({ title: 'Produto'})}
           />          
         </Stack.Navigator>
       </NavigationContainer>
